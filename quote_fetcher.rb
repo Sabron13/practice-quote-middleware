@@ -5,6 +5,12 @@ class QuoteFetcher
   end
 
   def call(env)
-    @app.call(env)
+    req = Rack::Request.new(env)
+
+    if req.path_info == "/quote"
+      [200, {"Content-Type" => "text/plain"}, [@quotes.sample]]
+    else
+      @app.call(env)
+    end
   end
 end
