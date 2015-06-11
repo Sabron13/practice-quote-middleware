@@ -1,5 +1,5 @@
 require_relative "quote_fetcher"
-require_relative "test_app"
+require "rack/lobster"
 
 use QuoteFetcher
-run TestApp.new
+run Rack::Lobster.new
