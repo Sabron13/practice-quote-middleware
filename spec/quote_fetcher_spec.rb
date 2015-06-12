@@ -17,6 +17,10 @@ describe QuoteFetcher do
   context "when called with a GET request to the correct route" do
     let(:response) { request.get('/quote') }
 
+    it "responds with status 200" do
+      expect(response.status).to eq(200)
+    end
+
     it "responds with a quote" do
       expect(quotes.include? response.body).to eq(true)
     end
