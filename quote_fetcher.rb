@@ -1,4 +1,6 @@
 class QuoteFetcher
+  attr_reader :quotes
+
   def initialize(app)
     @app = app
     @quotes = IO.readlines("fixtures/rickygervais.txt").map { |quote| quote.chomp }
