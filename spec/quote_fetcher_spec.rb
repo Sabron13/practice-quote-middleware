@@ -28,6 +28,10 @@ describe QuoteFetcher do
     it "doesn't return a quote" do
       expect(quotes.include? response.body).to eq(false)
     end
+
+    it "doesn't crash" do
+      expect(response.status).to eq(200)
+    end
   end
 
 
