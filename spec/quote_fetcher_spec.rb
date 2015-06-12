@@ -1,5 +1,5 @@
 require_relative "../quote_fetcher"
-require 'rack'
+require 'rack/test'
 
 class TestApp
   def call(env)
