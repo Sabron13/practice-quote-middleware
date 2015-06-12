@@ -10,15 +10,15 @@ end
 
 describe QuoteFetcher do
   let(:testapp) { TestApp.new }
-  let(:app) { proc {[200, {'Content-Type' => 'text/plain'}, ['OK']]} }
-  subject { QuoteFetcher.new(app) }
+  let(:middleware) { QuoteFetcher.new(testapp) }
 
   context "when called with a get request" do
-    let(:request) { Rack::MockRequest.new(app) }
+    let(:request) { Rack::MockRequest.new(testapp) }
     let(:response) { request.get('/quote')}
 
     it "responds with a quote" do
-      
+      expect(middleware.quotes.include? response.body)
     end
+
   end
 end
